@@ -1,6 +1,11 @@
 const Home = () => {
     return (
-      <h3>This is Home Page</h3>
+      <form>
+            <h3>This is Home Page</h3>
+            <input placeholder="name" />
+            <input placeholder="email" />
+            <button>send</button>
+      </form>
     );
   }
   

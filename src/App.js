@@ -3,12 +3,9 @@ import Home from "./components/Home/home";
 
 const App = () => {
   return (
-    <div>
-    <Link to="/home">sfs</Link>
     <Switch>
-      <Route exact path="/home" component={Home} />
+      <Route exact path="/" component={Home} />
     </Switch>
-    </div>
   );
 }
 
