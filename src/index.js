@@ -5,13 +5,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
+import { rootReducer } from "./reducers/rootReducer";
+import { loadState, saveState } from "./localStorage/localStorage";
+import { BrowserRouter } from 'react-router-dom';
 
-const store = createStore();
+/*LocalStorage*/
+const persistedState = loadState();
+
+/*Store*/                              /*Initial State*/
+const store = createStore(rootReducer, persistedState);
+
+store.subscribe(() => {
+  saveState(store.getState());
+})
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
