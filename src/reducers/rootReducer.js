@@ -1,8 +1,6 @@
 import {combineReducers} from 'redux';
+import { initialReducer } from "../reducers/InitialReducer";
 
 export const rootReducer = combineReducers({
-
-    // todos
-    // visibilitiFilter
-
-})
+    initialReducer: initialReducer,
+});

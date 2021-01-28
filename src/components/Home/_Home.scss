@@ -63,7 +63,10 @@
         min-height: 600px;
         margin-left: auto;
         background: linear-gradient(45deg, rgba(231,75,193,1) 0%, rgba(255,103,57,1) 50%, rgba(255,196,0,1) 100%);
-        display: none;
+
+        &_red {
+            background: linear-gradient(45deg, rgb(202, 231, 75) 0%, rgba(255,103,57,1) 50%, rgb(223, 49, 26) 100%); 
+        }
 
         &_active {
             display: block;
@@ -82,6 +85,11 @@
 
         &-fields {
             padding: 40px 15px 20px;
+            display: none;
+
+            &_active {
+                display: block;
+            }
         
             &-input {
                 background: transparent;

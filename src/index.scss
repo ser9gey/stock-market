@@ -39,6 +39,10 @@ button {
 	cursor: pointer;
 	outline: none;
 }
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
 
 /*Main Styles*/
 body {
@@ -61,5 +65,6 @@ code {
 
 .container {
 	max-width: 1800px;
-    margin: auto;
+	margin: auto;
+	padding: 0px 20px;
 }
