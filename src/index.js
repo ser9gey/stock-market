@@ -8,10 +8,7 @@ import { Provider } from 'react-redux';
 import { rootReducer } from "./reducers/rootReducer";
 import { loadState, saveState } from "./localStorage/localStorage";
 import { BrowserRouter } from 'react-router-dom';
-import firebase from "firebase/app";
-import "firebase/analytics";
-import "firebase/auth";
-import "firebase/firestore";
+import './firebase';
 
 /*LocalStorage*/
 const persistedState = loadState();
@@ -22,16 +19,6 @@ const store = createStore(rootReducer, persistedState);
 store.subscribe(() => {
   saveState(store.getState());
 })
-
-
-// TODO: Replace the following with your app's Firebase project configuration
-// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-const firebaseConfig = {
-  // ...
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>
