@@ -1,0 +1,23 @@
+.all-projects {
+    background: white;
+    padding: 35px;
+    height: 100vh;
+
+    &__card {
+        max-width: 800px;
+        border: 1px solid rgb(196, 192, 192);
+        padding: 25px 35px;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+        &-title {
+            font-size: 25px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        &-text {
+            margin-bottom: 10px;
+        }
+    }
+}

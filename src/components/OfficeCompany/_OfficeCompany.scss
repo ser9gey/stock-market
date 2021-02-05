@@ -1,0 +1,98 @@
+.office-company {
+    background: rgb(19, 18, 18);
+    padding: 23.5px;
+    color: white;
+    height: 100vh;
+
+    &__wrapp {
+        display: flex;
+        border: 2px solid white;
+        height: 100%;
+    }
+}
+
+.office-company-left-bar {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 2px solid white;
+    padding: 35px;
+
+    &__header {
+
+        &-logo {
+            margin-bottom: 20px;
+        }
+
+        &-ava {
+            max-width: 100%;
+        }
+
+        &-btns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &-btn {
+            background: transparent;
+            color: white;
+            font-size: 18px;
+        }
+    }
+
+    &__content {
+        
+        &-info {
+            margin-bottom: 10px;
+            line-height: 20px;
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    &__footer {
+        
+        &-btn {
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            background: #86082d;
+            color: white;
+        }
+    } 
+}
+
+.office-company-right-bar {
+    width: 100%;
+    padding: 35px;
+
+    &__title {
+        font-size: 25px;
+        margin-bottom: 35px;
+    }
+
+    &__projects {
+        height: 755px;
+        overflow-y: auto;
+        padding-right: 10px;
+
+        &-card {
+            border: 1px solid white;
+            padding: 24px 35px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            &-text:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
