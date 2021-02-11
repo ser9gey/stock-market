@@ -1,32 +1,24 @@
-import '../Home/_Home.scss';
-import logo from "../../images/home/1.png";
-import { Switch, Route, Link } from 'react-router-dom';
+import './home.scss';
+import { Switch, Route } from 'react-router-dom';
 import { UsersForm } from "../UsersForm/UsersForm";
 import { CompanyForm } from "../CompanyForm/CompanyForm";
 import { useState } from 'react';
+import HomeHeader from '../HomeHeader/HomeHeader';
 
 const Home = () => {
 
-  
+
   const [isLogin, setIsLogin] = useState(true);
 
-  const changeFieldsForm = (e) => {
-    let target = e.target;
+  const switchingFieldsOfTheForm = (e) => {
+    const target = e.target;
     setIsLogin(target.id === "logIn");
   }
 
   return (
     <div className="home">
       <div className="container">
-        <div className="home-header">
-          <div className="home-header__logo">
-            <img className="home-header__images" alt="test" src={logo}></img>
-          </div>
-          <div className="home-header__btns">
-            <Link to="/auth/users" data-btn="users" className="home-header__btn">For Users</Link>
-            <Link to="/auth/company" data-btn="company" className="home-header__btn">For Company</Link>
-          </div>
-        </div>
+        <HomeHeader />
         <div className="home-content">
           <section className="home-content__description">
             <h1 className="home-content__description-title">Welcome to Us</h1>
@@ -35,8 +27,8 @@ const Home = () => {
             </p>
           </section>
           <Switch>
-            <Route path="/auth/users" render={() => (<UsersForm state={isLogin} changeFieldsForm = { changeFieldsForm } />)} />
-            <Route path="/auth/company" render={() => (<CompanyForm state={isLogin} changeFieldsForm = { changeFieldsForm } />)} />
+            <Route path="/users" render={() => (<UsersForm isLoginFormActive={isLogin} onLoginFormActiveChanged={switchingFieldsOfTheForm} />)} />
+            <Route path="/company" render={() => (<CompanyForm isLoginFormActive={isLogin} onLoginFormActiveChanged={switchingFieldsOfTheForm} />)} />
           </Switch>
         </div>
       </div>

@@ -1,0 +1,26 @@
+.offer {
+    border: 1px solid rgb(255, 255, 255);
+    padding: 25px 35px;
+    border-radius: 10px;
+
+    &__title {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    &__text {
+        margin-bottom: 10px;
+    }
+
+    &__btn {
+        background: rgb(252, 185, 1);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 3px;
+    }
+}
+
+.content__projects-offer:not(:last-child) {
+    margin-bottom: 20px;
+}

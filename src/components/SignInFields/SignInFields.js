@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import {auth} from '../../firebase';
 
-export const SignInFields = ({state}) => {
+export const SignInFields = ({isLoginFormActive}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     let className = "home-content__form-fields";
 
-    if(state) {
+    if(isLoginFormActive) {
         className = "home-content__form-fields";
     } else {
         className += " home-content__form-fields_active";
