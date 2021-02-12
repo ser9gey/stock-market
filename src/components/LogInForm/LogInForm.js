@@ -1,8 +1,8 @@
-export const LogInForm = ({changeFieldsForm, state}) => {
+export const LogInForm = ({onLoginFormActiveChanged, isLoginFormActive}) => {
 
     let className = "home-content__form-btn";
 
-    if(state) {
+    if(isLoginFormActive) {
         className += " home-content__form-btn_active"
     } else {
         className = "home-content__form-btn";
@@ -10,6 +10,6 @@ export const LogInForm = ({changeFieldsForm, state}) => {
 
 
     return (
-        <button id="logIn" type="button" className={className} onClick={ changeFieldsForm }>Log In</button>
+        <button id="logIn" type="button" className={className} onClick={ onLoginFormActiveChanged }>Log In</button>
     )
 }

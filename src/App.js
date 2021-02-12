@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from "./components/Home/Home";
 import {auth} from './firebase';
-import UsersMainPage from './components/UsersMainPage/UsersMainPage'
+import Office from './components/Office/Office';
 
 const App = () => {
 
@@ -11,10 +11,11 @@ const App = () => {
       console.log(user);
     })
   }, [])
+
   return (
     <Switch>
+      <Route path="/office" component={Office} />
       <Route path="/" component={Home} />
-      <Route path="/persons" component={UsersMainPage} />
     </Switch>
   );
 }
