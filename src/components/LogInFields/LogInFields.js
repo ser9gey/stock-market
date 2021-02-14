@@ -1,9 +1,11 @@
 import {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import {auth} from '../../firebase';
 
 export const LogInFields = ({isLoginFormActive}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
 
     let className = "home-content__form-fields";
 
@@ -17,6 +19,7 @@ export const LogInFields = ({isLoginFormActive}) => {
         console.log(email, password);
         const user = await auth.createUserWithEmailAndPassword(email, password);
         console.log(user);
+        history.push("/users");
     }
 
     return (

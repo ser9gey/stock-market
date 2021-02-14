@@ -4,11 +4,15 @@ import Home from "./components/Home/Home";
 import {auth} from './firebase';
 import Office from './components/Office/Office';
 
+import {dataBase} from './firebase';
+import EditUser from './components/EditUser/EditUser';
+
 const App = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       console.log(user);
+      console.log(dataBase);
     })
   }, [])
 

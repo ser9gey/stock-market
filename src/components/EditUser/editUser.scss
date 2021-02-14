@@ -1,0 +1,72 @@
+.edit-user {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 900px;
+    height: 0px;
+    width: 100%;
+    background: #101010;
+    padding: 30px 30px 40px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.993);
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    transition: height 0.5s ease;
+    overflow: hidden;
+
+    &_active {
+        visibility: visible;
+        height: 700px;
+    }
+
+    &__wrapp {
+        border: 2px solid white;
+        height: 100%;
+        padding: 50px;
+
+        &-btn {
+            background: goldenrod;
+            color: white;
+            padding: 8px 25px;
+        }
+    }
+
+    &__row {
+        display: flex;
+        margin-bottom: 50px;
+        border-bottom: 2px solid rgb(253, 253, 253);
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+
+        &:first-child {
+            border: none;
+        }
+
+        &-btn {
+            margin-left: auto;
+            background: goldenrod;
+            color: white;
+            padding: 10px;
+        }
+    }
+
+    &__title {
+        margin-right: 10px;
+        white-space: nowrap;
+        font-size: 20px;
+        padding-top: 2px;
+    }
+
+    &__field {
+        width: 100%;
+        padding: 5px;
+        line-height: 20px;
+        background: transparent;
+        outline: none;
+        border: none;
+        color:white;
+    }
+}

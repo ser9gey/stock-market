@@ -23,7 +23,7 @@ const Office = () => {
                     : <OfficeCompanyContent />
                 }
                 </div>
-            </div>   
+            </div>  
         </div>
     )
 }
