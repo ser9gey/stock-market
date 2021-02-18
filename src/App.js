@@ -5,7 +5,6 @@ import {auth} from './firebase';
 import Office from './components/Office/Office';
 
 import {dataBase} from './firebase';
-import EditUser from './components/EditUser/EditUser';
 
 const App = () => {
 

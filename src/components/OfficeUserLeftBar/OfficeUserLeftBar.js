@@ -4,20 +4,37 @@ import { useHistory } from 'react-router-dom';
 import {auth} from '../../firebase';
 import EditUser from '../EditUser/EditUser';
 
+import {dataBase} from '../../firebase';
+
 const OfficeUserLeftBar = () => {
 
-    const [profile, changeProfile] = useState({name: "", surname: ""});
+    const [profile, changeProfile] = useState({name: "", surname: "", proff: "", skills: "", level: ""});
     console.log(profile);
 
     const onChangeUserProfile = (e) => {
         const target = e.target;
         const value = target.name === "name" ? target.value : target.name === "surname" ? target.value 
-        : target.name === "proff" ? target.value : target.name === "skull" ? target.value : target.value;
+        : target.name === "proff" ? target.value : target.name === "skills" ? target.value : target.value;
         const name = e.target.name;
-        changeProfile(profile[name] = value);
-        //Нужно доделать
+        changeProfile({...profile, [name]: value});
     }
 
+    const sendProfileOnDataBase = () => {
+
+        dataBase.ref('users/').set({
+            name: profile.name,
+            surname: profile.surname,
+            profession: profile.proff,
+            skills: profile.skills,
+            level: profile.level,
+        })
+
+    }
+
+    let rem = dataBase.ref('users/');
+        rem.on("value", (user) => {user.val()});
+        console.log(rem)
+        
 
     const [btn, showEditForm] = useState(false);
 
@@ -47,13 +64,17 @@ const OfficeUserLeftBar = () => {
                 </div>
             </div>
             <div className="office-profile__content">
-                <p className="office-profile__content-info">Name: {profile.name} </p>
-                <p className="office-profile__content-info">Surname: {profile.surname} </p>
-                <p className="office-profile__content-info">Profession:  </p>
-                <p className="office-profile__content-info">Skills:  </p>
-                <p className="office-profile__content-info">Skills Level:  </p>
+                <p className="office-profile__content-info">Name: {rem.name} </p>
+                <p className="office-profile__content-info">Surname: {} </p>
+                <p className="office-profile__content-info">Profession: {} </p>
+                <p className="office-profile__content-info">Skills: {} </p>
+                <p className="office-profile__content-info">Skills Level: {} </p>
             </div>
-            <EditUser onChangeUserProfile={onChangeUserProfile} profile={profile} btn={btn} userEditProfile={userEditProfile} />
+            <EditUser   
+                onChangeUserProfile={onChangeUserProfile}
+                profile={profile} btn={btn}
+                userEditProfile={userEditProfile} 
+                sendProfileOnDataBase={sendProfileOnDataBase} />
         </Fragment>
     )
 }

@@ -2,6 +2,8 @@ import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import {auth} from '../../firebase';
 
+// import {dataBase} from '../../firebase';
+
 export const LogInFields = ({isLoginFormActive}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,6 +21,22 @@ export const LogInFields = ({isLoginFormActive}) => {
         console.log(email, password);
         const user = await auth.createUserWithEmailAndPassword(email, password);
         console.log(user);
+
+
+        //Test
+        // dataBase.ref('users/' + email).set({
+        //     name: "",
+        //     surname: "",
+        //     profession: "",
+        //     skills: "",
+        //     level: "",
+        //     email: email,
+        //     password: password,
+        //     userStatus: ""
+        // })
+        //Test
+        
+
         history.push("/users");
     }
 

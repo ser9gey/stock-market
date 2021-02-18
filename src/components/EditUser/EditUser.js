@@ -1,6 +1,8 @@
 import './editUser.scss'
 
-const EditUser = ({userEditProfile, btn, profile, onChangeUserProfile}) => {
+
+
+const EditUser = ({userEditProfile, btn, profile, onChangeUserProfile, sendProfileOnDataBase}) => {
 
     let className = "edit-user";
     if(btn) {
@@ -17,25 +19,25 @@ const EditUser = ({userEditProfile, btn, profile, onChangeUserProfile}) => {
                 </div>
                 <div className="edit-user__row">
                     <p className="edit-user__title">Enter you name:</p>
-                    <input name="name" value={profile} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
+                    <input name="name" value={profile.name} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
                 </div>
                 <div className="edit-user__row">
                     <p className="edit-user__title">Enter you surname:</p>
-                    <input name="surname" value={profile} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
+                    <input name="surname" value={profile.surname} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
                 </div>
                 <div className="edit-user__row">
                     <p className="edit-user__title">Enter you profession:</p>
-                    <input name="proff" value={profile} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
+                    <input name="proff" value={profile.proff} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
                 </div>
                 <div className="edit-user__row">
                     <p className="edit-user__title">Enter you skills:</p>
-                    <input name="skill" value={profile} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
+                    <input name="skills" value={profile.skills} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
                 </div>
                 <div className="edit-user__row">
                     <p className="edit-user__title">Enter you skills level:</p>
-                    <input name="level" value={profile} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
+                    <input name="level" value={profile.level} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
                 </div>
-                {/* <button className="edit-user__wrapp-btn">Change</button> */}
+                <button className="edit-user__wrapp-btn" onClick={sendProfileOnDataBase}>Change</button>
             </div>
         </div>
     )
