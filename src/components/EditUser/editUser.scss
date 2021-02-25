@@ -23,7 +23,7 @@
     &__wrapp {
         border: 2px solid white;
         height: 100%;
-        padding: 50px;
+        padding: 80px 50px 50px;
 
         &-btn {
             background: goldenrod;
@@ -39,10 +39,6 @@
 
         &:last-child {
             margin-bottom: 0px;
-        }
-
-        &:first-child {
-            border: none;
         }
 
         &-btn {

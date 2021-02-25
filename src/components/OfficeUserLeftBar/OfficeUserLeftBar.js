@@ -1,27 +1,28 @@
 import { Fragment, useState } from 'react';
 import user from '../../images/officeUser/user.jpg';
 import { useHistory } from 'react-router-dom';
-import {auth} from '../../firebase';
+import {auth, dataBase} from '../../firebase';
 import EditUser from '../EditUser/EditUser';
-
-import {dataBase} from '../../firebase';
+import { useDispatch } from 'react-redux';
+import { MyContext } from '../../index';
+import { useContext } from 'react';
+import addUser from '../../actions/addUser';
 
 const OfficeUserLeftBar = () => {
 
+    const [stateEditBtn, showEditForm] = useState(false);
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [profile, changeProfile] = useState({name: "", surname: "", proff: "", skills: "", level: ""});
-    console.log(profile);
+    const value = useContext(MyContext).getState();
 
     const onChangeUserProfile = (e) => {
-        const target = e.target;
-        const value = target.name === "name" ? target.value : target.name === "surname" ? target.value 
-        : target.name === "proff" ? target.value : target.name === "skills" ? target.value : target.value;
-        const name = e.target.name;
-        changeProfile({...profile, [name]: value});
+        changeProfile({...profile, [e.target.name]: e.target.value});
     }
 
-    const sendProfileOnDataBase = () => {
+    const sendProfileOnDataBase = async (e) => {
 
-        dataBase.ref('users/').set({
+        await dataBase.ref('profiles/' + value.addUser.uid).update({
             name: profile.name,
             surname: profile.surname,
             profession: profile.proff,
@@ -29,17 +30,14 @@ const OfficeUserLeftBar = () => {
             level: profile.level,
         })
 
-    }
-
-    let rem = dataBase.ref('users/');
-        rem.on("value", (user) => {user.val()});
-        console.log(rem)
+        await dataBase.ref('profiles/' + value.addUser.uid).once("value")
+        .then( snapshot =>  {
+            dispatch(addUser(snapshot.val()))
+        })
         
-
-    const [btn, showEditForm] = useState(false);
-
-    const history = useHistory();
-
+        showEditForm(!e.target.dataset.state === "close");
+    }
+        
     const userLogout = () => {
         auth.signOut().then(() => {
             history.push("/users");
@@ -64,16 +62,16 @@ const OfficeUserLeftBar = () => {
                 </div>
             </div>
             <div className="office-profile__content">
-                <p className="office-profile__content-info">Name: {rem.name} </p>
-                <p className="office-profile__content-info">Surname: {} </p>
-                <p className="office-profile__content-info">Profession: {} </p>
-                <p className="office-profile__content-info">Skills: {} </p>
-                <p className="office-profile__content-info">Skills Level: {} </p>
+                <p className="office-profile__content-info">Name: {value.addUser.name} </p>
+                <p className="office-profile__content-info">Surname: {value.addUser.surname} </p>
+                <p className="office-profile__content-info">Profession: {value.addUser.profession} </p>
+                <p className="office-profile__content-info">Skills: {value.addUser.skills} </p>
+                <p className="office-profile__content-info">Skills Level: {value.addUser.level} </p>
             </div>
             <EditUser   
                 onChangeUserProfile={onChangeUserProfile}
-                profile={profile} btn={btn}
-                userEditProfile={userEditProfile} 
+                profile={profile} 
+                stateEditBtn={stateEditBtn}
                 sendProfileOnDataBase={sendProfileOnDataBase} />
         </Fragment>
     )

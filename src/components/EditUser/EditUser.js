@@ -1,22 +1,10 @@
 import './editUser.scss'
 
-
-
-const EditUser = ({userEditProfile, btn, profile, onChangeUserProfile, sendProfileOnDataBase}) => {
-
-    let className = "edit-user";
-    if(btn) {
-        className += " edit-user_active"
-    } else {
-        className = "edit-user";
-    }
+const EditUser = ({stateEditBtn, profile, onChangeUserProfile, sendProfileOnDataBase}) => {
 
     return (
-        <div className={className}>
+        <div className={`edit-user ${stateEditBtn ? " edit-user_active" : "edit-user"}`}>
             <div className="edit-user__wrapp">
-                <div className="edit-user__row">
-                    <button data-state="close" className="edit-user__row-btn" onClick={userEditProfile}>X</button>
-                </div>
                 <div className="edit-user__row">
                     <p className="edit-user__title">Enter you name:</p>
                     <input name="name" value={profile.name} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
@@ -37,7 +25,7 @@ const EditUser = ({userEditProfile, btn, profile, onChangeUserProfile, sendProfi
                     <p className="edit-user__title">Enter you skills level:</p>
                     <input name="level" value={profile.level} className="edit-user__field" type="text" onChange={onChangeUserProfile} />
                 </div>
-                <button className="edit-user__wrapp-btn" onClick={sendProfileOnDataBase}>Change</button>
+                <button data-state="close" className="edit-user__wrapp-btn" onClick={sendProfileOnDataBase}>Change</button>
             </div>
         </div>
     )
