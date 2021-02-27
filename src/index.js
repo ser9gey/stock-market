@@ -9,9 +9,6 @@ import { rootReducer } from "./reducers/rootReducer";
 import { BrowserRouter } from 'react-router-dom';
 import './firebase';
 
-
-/*Store*/ 
-
 export const MyContext = React.createContext();
 
 const store = createStore(rootReducer)

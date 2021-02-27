@@ -2,53 +2,40 @@ import { Fragment, useState } from 'react';
 import user from '../../images/officeUser/user.jpg';
 import { useHistory } from 'react-router-dom';
 import {auth, dataBase} from '../../firebase';
-import EditUser from '../EditUser/EditUser';
-import { useDispatch } from 'react-redux';
-import { MyContext } from '../../index';
-import { useContext } from 'react';
+import EditFormUser from '../EditFormUser/EditFormUser';
+import { useDispatch, useSelector } from 'react-redux';
 import addUser from '../../actions/addUser';
 
 const OfficeUserLeftBar = () => {
 
-    const [stateEditBtn, showEditForm] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
-    const [profile, changeProfile] = useState({name: "", surname: "", proff: "", skills: "", level: ""});
-    const value = useContext(MyContext).getState();
+    const profile = useSelector(state => state.profile);
+    const [editFormVisible, showEditForm] = useState(false);
 
-    const onChangeUserProfile = (e) => {
-        changeProfile({...profile, [e.target.name]: e.target.value});
-    }
+    const sendProfileOnDataBase = async (values) => {
 
-    const sendProfileOnDataBase = async (e) => {
-
-        await dataBase.ref('profiles/' + value.addUser.uid).update({
-            name: profile.name,
-            surname: profile.surname,
-            profession: profile.proff,
-            skills: profile.skills,
-            level: profile.level,
+        await dataBase.ref('profiles/' + profile.uid).update({
+            name: values.name,
+            surname: values.surname,
+            profession: values.proff,
+            skills: values.skills,
+            level: values.level,
         })
 
-        await dataBase.ref('profiles/' + value.addUser.uid).once("value")
-        .then( snapshot =>  {
-            dispatch(addUser(snapshot.val()))
-        })
-        
-        showEditForm(!e.target.dataset.state === "close");
+        await dataBase.ref('profiles/' + profile.uid).once("value")
+        .then( snapshot =>  dispatch(addUser(snapshot.val())))
+
+        showEditForm(false);
     }
-        
+
     const userLogout = () => {
-        auth.signOut().then(() => {
-            history.push("/users");
-        }).catch((error) => {
-            console.log("Error");
-        });
+        auth.signOut()
+            .then(() => history.push("/users"))
+            .catch((error) => console.log(error));
     }
 
-    const userEditProfile = (e) => {
-        showEditForm(e.target.dataset.state === "open");
-    }
+    const userEditProfile = (e) => showEditForm(true)
 
     return (
         <Fragment>
@@ -62,17 +49,17 @@ const OfficeUserLeftBar = () => {
                 </div>
             </div>
             <div className="office-profile__content">
-                <p className="office-profile__content-info">Name: {value.addUser.name} </p>
-                <p className="office-profile__content-info">Surname: {value.addUser.surname} </p>
-                <p className="office-profile__content-info">Profession: {value.addUser.profession} </p>
-                <p className="office-profile__content-info">Skills: {value.addUser.skills} </p>
-                <p className="office-profile__content-info">Skills Level: {value.addUser.level} </p>
+                <p className="office-profile__content-info">Name: {profile.name} </p>
+                <p className="office-profile__content-info">Surname: {profile.surname} </p>
+                <p className="office-profile__content-info">Profession: {profile.profession} </p>
+                <p className="office-profile__content-info">Skills: {profile.skills} </p>
+                <p className="office-profile__content-info">Skills Level: {profile.level} </p>
             </div>
-            <EditUser   
-                onChangeUserProfile={onChangeUserProfile}
-                profile={profile} 
-                stateEditBtn={stateEditBtn}
-                sendProfileOnDataBase={sendProfileOnDataBase} />
+            <EditFormUser
+                profile={profile}
+                onSubmit={sendProfileOnDataBase}
+                visible={editFormVisible}
+            />
         </Fragment>
     )
 }
