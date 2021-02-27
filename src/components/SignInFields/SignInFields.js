@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import {auth} from '../../firebase';
+import classnames from 'classnames';
 
 export const SignInFields = ({isLoginFormActive}) => {
     const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ export const SignInFields = ({isLoginFormActive}) => {
     }
 
     return (
-        <div className={`home-content__form-fields ${isLoginFormActive ? "home-content__form-fields" : " home-content__form-fields_active"}`}>
+        <div className={classnames('home-content__form-fields', { ' home-content__form-fields_active': !isLoginFormActive})}>
             <input className="home-content__form-fields-input" placeholder="Email" type="email" required value={email} onChange={e => setEmail(e.target.value)}></input>
             <input className="home-content__form-fields-input" placeholder="Password" type="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
             <button type="submit" className="home-content__form-fields-btn" onClick={signIn}>Enter</button>

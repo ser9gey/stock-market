@@ -4,7 +4,6 @@ import { UsersForm } from "../UsersForm/UsersForm";
 import { CompanyForm } from "../CompanyForm/CompanyForm";
 import { useState } from 'react';
 import HomeHeader from '../HomeHeader/HomeHeader';
-import Loader from '../Loader/Loader';
 
 const Home = () => {
 
@@ -18,7 +17,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* <Loader /> */}
       <div className="container">
         <HomeHeader />
         <div className="home-content">

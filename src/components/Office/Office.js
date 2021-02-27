@@ -3,34 +3,34 @@ import OfficeUserLeftBar from '../OfficeUserLeftBar/OfficeUserLeftBar';
 import OfficeCompanyLeftBar from '../OfficeCompanyLeftBar/OfficeCompanyLeftBar';
 import OfficeUserContent from '../OfficeUserContent/OfficeUserContent';
 import OfficeCompanyContent from '../OfficeCompanyContent/OfficeCompanyContent';
-import { useContext } from 'react';
-import { MyContext } from '../../index';
-import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+
+import Loader from '../Loader/Loader';
 
 const Office = () => {
-    const history = useHistory();
-    const value = useContext(MyContext).getState();
-
-    if(value.addUser.role === undefined) {
-        history.push("/users")
-    }
+    const userProfile = useSelector(state => state);
 
     return (
         <div className="office">
-            <div className="office__wrapp">
-                <div className="office-profile">
-                {(value.addUser.role === "user")
-                    ? <OfficeUserLeftBar />
-                    : <OfficeCompanyLeftBar />
-                }
-                </div>
-                <div className="office-content">
-                {(value.addUser.role === "user")
-                    ? <OfficeUserContent />
-                    : <OfficeCompanyContent />
-                }
-                </div>
-            </div>  
+            {userProfile.profile.role === undefined || null
+                ? <Loader />
+                : <div className="office__wrapp">
+                    <div className="office-profile">
+                        {(userProfile.profile.role === "user")
+                            ? <OfficeUserLeftBar />
+                            : <OfficeCompanyLeftBar />
+                        }
+                    </div>
+                    <div className="office-content">
+                        {(userProfile.profile.role === "user")
+                            ? <OfficeUserContent />
+                            : <OfficeCompanyContent />
+                        }
+                    </div>
+                </div>  
+            }
+            
         </div>
     )
 }

@@ -1,0 +1,15 @@
+.form {
+
+    &__textarea {
+        background: transparent;
+        font-size: 18px;
+        width: 100%;
+        height: 89%;
+        outline: none;
+        border: 1px solid white;
+        resize: none;
+        color: white;
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+}

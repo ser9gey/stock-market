@@ -1,8 +1,6 @@
 import {combineReducers} from 'redux';
-import { addUser } from "../reducers/addUser";
-import { editProfile } from "../reducers/editProfile"
+import { profile } from "../reducers/profile";
 
 export const rootReducer = combineReducers({
-    addUser: addUser,
-    editProfile: editProfile,
+    profile: profile,
 });
