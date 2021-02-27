@@ -6,25 +6,27 @@ import reportWebVitals from './reportWebVitals';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
 import { rootReducer } from "./reducers/rootReducer";
-import { loadState, saveState } from "./localStorage/localStorage";
 import { BrowserRouter } from 'react-router-dom';
 import './firebase';
 
-/*LocalStorage*/
-const persistedState = loadState();
 
-/*Store*/                              /*Initial State*/
-const store = createStore(rootReducer, persistedState);
+/*Store*/ 
+
+export const MyContext = React.createContext();
+
+const store = createStore(rootReducer)
 
 store.subscribe(() => {
-  saveState(store.getState());
+  console.log( store.getState() );
 })
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <MyContext.Provider value={store}>
+          <App />
+        </MyContext.Provider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
