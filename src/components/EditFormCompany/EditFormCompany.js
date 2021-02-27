@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 export const EditFormCompany = ({visible, onSubmit, profile}) => {
 
     const [values, setValues] = useState({info: ""});
-    console.log(values)
 
     useEffect(() => {
         setValues({...profile, info: profile.info})
