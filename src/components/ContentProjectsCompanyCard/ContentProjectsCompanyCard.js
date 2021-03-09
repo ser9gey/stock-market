@@ -3,6 +3,7 @@ const ContentProjectsCompanyCard = () => {
         <div className="content__projects-card">
             <p className="content__projects-card-text">Name of project: </p>
             <p className="content__projects-card-text">Name user: </p>
+            <p className="content__projects-card-text">Surname user: </p>
             <p className="content__projects-card-text">Profession of the user: </p>
             <p className="content__projects-card-text">User skills: </p>
             <p className="content__projects-card-text">User skills level: </p>

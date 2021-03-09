@@ -4,7 +4,8 @@ import {auth, dataBase} from '../../firebase';
 import { useHistory } from 'react-router-dom';
 import {EditFormCompany} from '../EditFormCompany/EditFormCompany';
 import { useDispatch, useSelector } from 'react-redux';
-import addUser from '../../actions/addUser'
+import addUser from '../../actions/addUser';
+import {AddNewProjectFromCompany} from '../AddNewProjectFromCompany/AddNewProjectFromCompany';
 
 const OfficeCompanyLeftBar = () => {
 
@@ -12,6 +13,7 @@ const OfficeCompanyLeftBar = () => {
     const profile = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [editFormVisible, showEditForm] = useState(false);
+    const [formCreateProject, showCreateFormProject] = useState(false);
 
     const companyLogout = () => {
         auth.signOut()
@@ -33,6 +35,7 @@ const OfficeCompanyLeftBar = () => {
         showEditForm(!editFormVisible);
     }
     
+    const createProject = () => showCreateFormProject(!formCreateProject);
 
     return (
         <Fragment>
@@ -48,12 +51,17 @@ const OfficeCompanyLeftBar = () => {
             <div className="office-profile__content">
                 <p className="office-profile__content-info">About Us:</p>
                 <p className="office-profile__content-info">{profile.info}</p>
-                <button className="office-profile__content-btn">Add Project</button>
+                <button className="office-profile__content-btn" onClick={createProject} >Create Project</button>
             </div>
             <EditFormCompany 
                 visible={editFormVisible}
                 onSubmit={sendProfileOnDataBase} 
                 profile={profile}
+            />
+            <AddNewProjectFromCompany 
+                visible={formCreateProject}
+                showCreateFormProject={showCreateFormProject}
+                formCreateProject={formCreateProject}
             />
         </Fragment>
     )
