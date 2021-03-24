@@ -7,12 +7,10 @@ import HomeHeader from '../HomeHeader/HomeHeader';
 
 const Home = () => {
 
-
   const [isLogin, setIsLogin] = useState(true);
 
   const switchingFieldsOfTheForm = (e) => {
-    const target = e.target;
-    setIsLogin(target.id === "logIn");
+    setIsLogin(e.target.id === "signIn");
   }
 
   return (

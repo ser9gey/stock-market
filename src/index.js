@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux';
 import { rootReducer } from "./reducers/rootReducer";
 import { BrowserRouter } from 'react-router-dom';
 import './firebase';
-//dgdgdsdfsdfsd
+import logger from 'redux-logger'
+
 export const MyContext = React.createContext();
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(logger))
 
 store.subscribe(() => {
   console.log( store.getState() );

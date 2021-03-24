@@ -15,11 +15,19 @@
         }
 
         &_yellow {
-            background: #fab414;
+            background: #705411;
+
+            &_active {
+                background: #ffbb00;
+            }
         }
 
         &_red {
-            background: #8a1739;
+            background: #4e0d21;
+
+            &_active {
+                background: #8a1739;;
+            }
         }
     }
 
@@ -43,8 +51,25 @@
                 margin-bottom: 0px;
             }
 
-            &-text:not(:last-child) {
-                margin-bottom: 10px;
+            &-text {
+                margin-bottom: 15px;
+
+                &_title {
+                    font-size: 22px;
+                    font-weight: 600;
+                }
+            }
+
+            &-status {
+                font-size: 18px;
+
+                &_accept {
+                    color: rgb(3, 238, 3);
+                }
+
+                &_reject {
+                    color: rgb(255, 0, 0);
+                }
             }
 
             &-btn {
@@ -58,11 +83,11 @@
                 }
 
                 &_accept {
-                    background: red;
+                    background: green;
                 }
 
                 &_reject {
-                    background: green;
+                    background: red;
                 }
             }
         }
