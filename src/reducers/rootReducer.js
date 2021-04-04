@@ -4,7 +4,7 @@ import {projects} from "../reducers/projects";
 import {requests} from "../reducers/requests";
 
 export const rootReducer = combineReducers({
-    profile: profile,
-    projects: projects,
-    requests: requests,
+    profile,
+    projects,
+    requests,
 });

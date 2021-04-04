@@ -107,26 +107,4 @@
     .office-profile__header {
         margin-bottom: 30px;
     }
-    .content__projects-card {
-        padding: 15px !important;
-    }
-    .offer {
-        padding: 15px !important;  
-    }
-}
-
-@media(max-width: 450px) {
-    .content__btn {
-        padding: 15px 25px !important;
-        width: 80%;
-        margin-bottom: 10px;
-        margin-right: 0px !important;
-    }
-    .content__projects-card-btn {
-        padding: 8px 16px !important;
-    }
-    .content__projects-card-text_title, .offer__title {
-        font-size: 20px !important;
-    }
-
 }

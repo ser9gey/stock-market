@@ -2,10 +2,9 @@ import { useEffect, createContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { auth, dataBase } from '../firebase';
-import addUser from '../actions/addUser';
+import {addUser} from '../providers';
 
 export const UserContext = createContext({ user: null });
-
 export const UserProvider = (props) => {
 
   const dispatch = useDispatch();
@@ -14,7 +13,6 @@ export const UserProvider = (props) => {
 
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
-      console.log(userAuth);
 
       setUser(userAuth)
 

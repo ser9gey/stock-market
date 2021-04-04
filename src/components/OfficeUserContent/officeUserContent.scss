@@ -84,12 +84,38 @@
 
                 &_accept {
                     background: green;
+
+                    &:disabled {
+                        background: rgb(17, 88, 17);
+                    }
                 }
 
                 &_reject {
                     background: red;
+
+                    &:disabled {
+                        background: rgb(158, 25, 25);
+                    }
                 }
             }
         }
+    }
+}
+
+@media(max-width: 600px) {
+    .content__projects-card {
+        padding: 15px;
+    }
+}
+
+@media(max-width: 450px) {
+    .content__btn {
+        padding: 15px 25px;
+        width: 80%;
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
+    .content__projects-card-btn {
+        padding: 8px 16px;
     }
 }

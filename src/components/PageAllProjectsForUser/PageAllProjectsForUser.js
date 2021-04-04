@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Offer from '../Offer/Offer';
+import {Offer} from '../PageAllProjectsForUser';
 
 const PageAllProjectsForUser = ({projects}) => {
 

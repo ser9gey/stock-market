@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
 import './offer.scss';
+import { useSelector } from 'react-redux';
 import {dataBase} from '../../firebase';
 import { useState } from 'react';
 

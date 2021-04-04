@@ -1,3 +1,10 @@
 .form__wrapp_little_padding {
     padding: 45px;
 }
+
+@media(max-width: 600px) {
+    .form__wrapp_little_padding {
+        border: none;
+        padding: 30px 0px 0px 0px;
+    }
+}

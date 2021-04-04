@@ -1,17 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
-import ContentProjectsUserCard from '../ContentProjectsUserCard/ContentProjectsUserCard';
-import PageAllProjectsForUser from '../PageAllProjectsForUser/PageAllProjectsForUser';
+import { useEffect, useMemo } from 'react';
 import {dataBase} from '../../firebase';
-import addProject from '../../actions/addProject';
 import { useDispatch, useSelector } from "react-redux";
+import {addRequests, ContentProjectsUserCard, PageAllProjectsForUser, addProject} from '../ContentProjectsUser';
 
-import {addRequests} from '../../actions/requests';
-
-const ContentProjectsUser = ({ btn }) => {
+const ContentProjectsUser = ({ showProjects }) => {
 
     const dispatch = useDispatch();
     const projects = useSelector(state => state.projects);
     const requests = useSelector(state => state.requests);
+    const profile = useSelector(state => state.profile.uid);
 
     useEffect(() => {
         dataBase.ref('projects/').once('value')
@@ -24,10 +21,10 @@ const ContentProjectsUser = ({ btn }) => {
     const myProjects = useMemo(() => {
 
         return Object.values(requests).reduce((sum, el) => {
-            return el.status === "accepted" ? [...sum, el.projectUid] : [...sum]
+            return el.status === "accepted" && el.userUid === profile ? [...sum, el.projectUid] : [...sum]
         }, [])
 
-    }, [projects, requests])
+    }, [projects, requests, profile])
 
     const project = Object.values(projects).filter(project => {
         return myProjects.includes(project.projectId)
@@ -35,11 +32,10 @@ const ContentProjectsUser = ({ btn }) => {
 
     return (
         <div className="content__projects">
-            {btn
+            {showProjects
                 ? project
                 : <PageAllProjectsForUser projects={projects} />
             }
-
         </div>
     )
 }

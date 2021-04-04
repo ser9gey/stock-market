@@ -3,20 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux';
-import { rootReducer } from "./reducers/rootReducer";
 import { BrowserRouter } from 'react-router-dom';
 import './firebase';
-import logger from 'redux-logger'
+import { store } from './store/store';
 
 export const MyContext = React.createContext();
-
-const store = createStore(rootReducer, applyMiddleware(logger))
-
-store.subscribe(() => {
-  console.log( store.getState() );
-})
 
 ReactDOM.render(
   <React.StrictMode>
