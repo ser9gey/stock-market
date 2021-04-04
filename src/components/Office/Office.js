@@ -29,8 +29,7 @@ const Office = () => {
                         }
                     </div>
                 </div>  
-            }
-            
+            }  
         </div>
     )
 }

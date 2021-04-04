@@ -39,7 +39,7 @@ export const LogInFields = ({isLoginFormActive}) => {
         <div className={classnames( 'home-content__form-fields', { ' home-content__form-fields_active': isLoginFormActive})}>
             <input className="home-content__form-fields-input" placeholder="Email" type="email" required value={email} onChange={e => setEmail(e.target.value)}></input>
             <input className="home-content__form-fields-input" placeholder="Password" type="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
-            <button type="submit" className="home-content__form-fields-btn" onClick={logIn}>Log in</button>
+            <button type="submit" className="home-content__form-fields-btn" onClick={logIn}>Enter</button>
         </div>
     )
 }

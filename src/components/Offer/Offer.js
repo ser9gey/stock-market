@@ -1,13 +1,40 @@
+import { useSelector } from 'react-redux';
 import './offer.scss';
+import {dataBase} from '../../firebase';
+import { useState } from 'react';
 
-const Offer = () => {
+const Offer = ({ project }) => {
+
+    const role = useSelector(state => state.profile.role);
+    const profile = useSelector(state => state.profile);
+    const [attribute, setAttribute] = useState(false)
+
+    const sendRequest = async () => {
+
+        const newRequestRef = await dataBase.ref('requests/').push()
+
+        await newRequestRef.set({
+            userUid: profile.uid,
+            companyUid: project.profileUid,
+            projectUid: project.projectId,
+            requestUid: newRequestRef.key,
+        })
+        .then(() => setAttribute(true))
+    }
+
     return (
         <div className="content__projects-offer offer">
-            <p className="offer__title">Front-end developer</p>
-            <p className="offer__text">Company Acc</p>
-            <p className="offer__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, fugit obcaecati debitis quasi iste sed! Placeat, adipisci modi ea voluptatum suscipit atque accusamus perferendis eveniet, culpa, eos iure quam eum!</p>
-            <p className="offer__text">Price: 1500$</p>
-            <button className="offer__btn">Send a request</button>
+            <p className="offer__title">Profession: {project.requiredProfession}</p>
+            <p className="offer__text">Name Company: {project.nameCompany}</p>
+            <p className="offer__text">Name Project: {project.nameProject}</p>
+            <p className="offer__text">Description Project: {project.descriptionProject}</p>
+            <p className="offer__text">Skills: {project.requiredSkills}</p>
+            <p className="offer__text">Payment: {project.payment}</p>
+            {role === 'user'
+                ? <button disabled={attribute} className="offer__btn" onClick={sendRequest}>Send a request</button>
+                : null
+            }
+
         </div>
     )
 }

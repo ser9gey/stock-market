@@ -1,11 +1,7 @@
-import './allProjects.scss';
+import { Fragment } from "react";
 import Offer from '../Offer/Offer';
-import { Fragment } from 'react';
-import { useSelector } from 'react-redux';
 
-const AllProjects = () => {
-
-    const projects = useSelector(state => state.projects);
+const PageAllProjectsForUser = ({projects}) => {
 
     const offer = Object.keys(projects).map(id => {
         return <Offer key={id} project={projects[id]} />
@@ -18,4 +14,4 @@ const AllProjects = () => {
     )
 }
 
-export default AllProjects;
+export default PageAllProjectsForUser

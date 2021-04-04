@@ -7,8 +7,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         padding: 15px 0px;
         border-bottom: 1px solid white;
+
+        &_active {
+            border-bottom: none;
+        }
 
         &__logo {
             width: 100px;
@@ -17,6 +22,10 @@
         &__images {
             max-width: 100%;
             height: auto;
+        }
+
+        &__btns_active {
+            display: block !important;
         }
     }
 }
@@ -35,6 +44,25 @@
 
     &_active {
         background: #ffc400;
+    }
+}
+
+.home-header__burger {
+    border: 2px solid white;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+
+    &-line {
+        background: white;
+        width: 30px;
+        height: 2px;
+        margin-bottom: 6px;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
     }
 }
 
@@ -65,7 +93,7 @@
         background: linear-gradient(45deg, rgba(231,75,193,1) 0%, rgba(255,103,57,1) 50%, rgba(255,196,0,1) 100%);
 
         &_red {
-            background: linear-gradient(45deg, rgb(202, 231, 75) 0%, rgba(255,103,57,1) 50%, rgb(223, 49, 26) 100%); 
+            background: linear-gradient(45deg, rgb(202, 231, 75) 0%, rgba(255,103,57,1) 50%, rgb(223, 49, 26) 100%);
         }
 
         &_active {
@@ -77,9 +105,9 @@
             padding: 25px;
             background: transparent;
             color: white;
-            
+
             &_active {
-                background: rgb(48, 45, 45); 
+                background: rgb(48, 45, 45);
             }
         }
 
@@ -90,7 +118,7 @@
             &_active {
                 display: block;
             }
-        
+
             &-input {
                 background: transparent;
                 outline: none;
@@ -100,19 +128,69 @@
                 padding: 20px;
                 border-radius: 10px;
                 color: white;
-        
+
                 &::placeholder {
-                    color: white; 
+                    color: white;
                 }
             }
-        
+
             &-btn {
-                background: rgb(48, 45, 45); 
+                background: rgb(48, 45, 45);
                 width: 100%;
                 padding: 21px;
                 color: white;
                 border-radius: 10px;
             }
+
+            &-error {
+                margin-top: 10px;
+                text-align: center;
+            }
         }
+    }
+}
+
+@media(max-width: 1420px) {
+    .home-content {
+        padding: 105px 40px 0px;
+    }
+}
+
+@media(max-width: 1285px) {
+    .home-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .home-content__description {
+        margin-bottom: 100px;
+        text-align: center;
+    }
+    .home-content__form {
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 500px) {
+    .home-header__burger {
+        display: block;
+    }
+    .home-header__btns {
+        display: none;
+    }
+    .home-content {
+        padding: 60px 0px 0px;
+    }
+    .home-content__description-title {
+        font-size: 36px;
+    }
+    .home-header__btns {
+        order: 3;
+        width: 100%;
+    }
+    .home-header__btn {
+        display: block;
+        margin-right: 0px;
+        text-align: center;
+        padding: 12px 15px;
     }
 }
