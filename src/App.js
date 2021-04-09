@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
-import Home from "./components/Home/home";
-import Office from './components/Office/Office';
+import Home from "./pages/HomePage/Home/home";
+import Office from './pages/Office/Office/Office';
 import { UserProvider } from '../src/providers/UserProvider';
 
 const App = () => {
