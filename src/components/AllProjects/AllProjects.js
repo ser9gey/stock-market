@@ -1,7 +1,7 @@
 import './allProjects.scss';
-import Offer from '../Offer/Offer';
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import {Offer} from '../AllProjects';
 
 const AllProjects = () => {
 

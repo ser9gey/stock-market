@@ -1,11 +1,8 @@
 import { Fragment, useState } from 'react';
-import company from '../../images/officeCompany/company.png';
 import {auth, dataBase} from '../../firebase';
 import { useHistory } from 'react-router-dom';
-import {EditFormCompany} from '../EditFormCompany/EditFormCompany';
 import { useDispatch, useSelector } from 'react-redux';
-import addUser from '../../actions/addUser';
-import {AddNewProjectFromCompany} from '../AddNewProjectFromCompany/AddNewProjectFromCompany';
+import {company, EditFormCompany, addUser, AddNewProjectFromCompany} from '../OfficeCompanyLeftBar';
 
 const OfficeCompanyLeftBar = () => {
 
@@ -35,7 +32,7 @@ const OfficeCompanyLeftBar = () => {
         showEditForm(!editFormVisible);
     }
     
-    const createProject = () => showCreateFormProject(!formCreateProject);
+    const createProject = () => showCreateFormProject(true);
 
     return (
         <Fragment>
@@ -61,7 +58,6 @@ const OfficeCompanyLeftBar = () => {
             <AddNewProjectFromCompany 
                 visible={formCreateProject}
                 showCreateFormProject={showCreateFormProject}
-                formCreateProject={formCreateProject}
             />
         </Fragment>
     )

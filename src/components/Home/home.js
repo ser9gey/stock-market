@@ -1,9 +1,7 @@
 import './home.scss';
 import { Switch, Route } from 'react-router-dom';
-import { UsersForm } from "../UsersForm/UsersForm";
-import { CompanyForm } from "../CompanyForm/CompanyForm";
 import { useState } from 'react';
-import HomeHeader from '../HomeHeader/HomeHeader';
+import {UsersForm, CompanyForm, HomeHeader} from '../Home';
 
 const Home = () => {
 

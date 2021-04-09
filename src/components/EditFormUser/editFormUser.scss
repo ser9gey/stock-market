@@ -29,6 +29,10 @@
             background: goldenrod;
             color: white;
             padding: 8px 25px;
+
+            &:disabled {
+                background: rgb(138, 107, 31); 
+            }
         }
     }
 
@@ -80,10 +84,6 @@
 }
 
 @media(max-width: 600px) {
-    .form__wrapp_little_padding {
-        border: none;
-        padding: 30px 0px 0px 0px !important;
-    }
     .form__wrapp {
         padding: 40px 0px 10px;
         border: none;

@@ -1,12 +1,6 @@
 import './office.scss';
-import OfficeUserLeftBar from '../OfficeUserLeftBar/OfficeUserLeftBar';
-import OfficeCompanyLeftBar from '../OfficeCompanyLeftBar/OfficeCompanyLeftBar';
-import OfficeUserContent from '../OfficeUserContent/OfficeUserContent';
-import OfficeCompanyContent from '../OfficeCompanyContent/OfficeCompanyContent';
 import { useSelector } from 'react-redux';
-
-
-import Loader from '../Loader/Loader';
+import {OfficeUserLeftBar, OfficeCompanyLeftBar, OfficeUserContent, OfficeCompanyContent, Loader} from '../Office';
 
 const Office = () => {
     const userProfile = useSelector(state => state);

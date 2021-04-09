@@ -1,5 +1,5 @@
 import './editFormCompany.scss';
-import classnames from 'classnames'
+import classnames from 'classnames';
 import { useEffect, useState } from 'react';
 
 export const EditFormCompany = ({visible, onSubmit, profile}) => {

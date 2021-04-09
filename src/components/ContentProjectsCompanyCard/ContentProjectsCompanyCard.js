@@ -1,9 +1,12 @@
 import {useDispatch} from 'react-redux';
 import {dataBase} from '../../firebase';
-import {updateRequests} from '../../actions/requests';
+import { useState } from 'react';
+import {updateRequests} from '../ContentProjectsCompanyCard';
 
 const ContentProjectsCompanyCard = ({values}) => {
-    const dispath = useDispatch()
+    const [disableBtnAccept, setDisableBtnAccept] = useState(false);
+    const [disableBtnReject, setDisableBtnReject] = useState(false);
+    const dispath = useDispatch();
 
     const whatchChangesOnce = async (requestUid) => {
         const newReq = await dataBase.ref('requests/' + values.requestUid).once('value');
@@ -11,11 +14,13 @@ const ContentProjectsCompanyCard = ({values}) => {
     }
 
     const acceptRequest = async (values) => {
+        setDisableBtnAccept(true);
         await dataBase.ref('requests/' + values.requestUid).update({status: 'accepted'});
         whatchChangesOnce(values.requestUid)
     }
 
     const rejectRequest = async (values) => {
+        setDisableBtnReject(true);
         await dataBase.ref('requests/' + values.requestUid).update({status: 'rejected'});
         whatchChangesOnce(values.requestUid);
     }
@@ -31,8 +36,8 @@ const ContentProjectsCompanyCard = ({values}) => {
             {values.status
                 ?<p className={`content__projects-card-status ${values.status === 'accepted' ? 'content__projects-card-status_accept' : 'content__projects-card-status_reject'}`}>Status: {values.status}</p>
                 :<div className="content__projects-card-btns">
-                    <button className="content__projects-card-btn content__projects-card-btn_accept" onClick={() => acceptRequest(values)} >Accept</button>
-                    <button className="content__projects-card-btn content__projects-card-btn_reject" onClick={() => rejectRequest(values)} >Reject</button>
+                    <button className="content__projects-card-btn content__projects-card-btn_accept" onClick={() => acceptRequest(values)} disabled={disableBtnAccept}>Accept</button>
+                    <button className="content__projects-card-btn content__projects-card-btn_reject" onClick={() => rejectRequest(values)} disabled={disableBtnReject}>Reject</button>
                 </div>
             }
         </div>

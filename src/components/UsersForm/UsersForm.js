@@ -1,7 +1,4 @@
-import { LogInForm } from '../LogInForm/LogInForm';
-import { SignIn } from '../SignIn/SignIn';
-import { LogInFields } from '../LogInFields/LogInFields';
-import { SignInFields } from '../SignInFields/SignInFields';
+import {LogInForm, SignIn, LogInFields, SignInFields} from '../UsersForm';
 
 export const UsersForm = ({onLoginFormActiveChanged, isLoginFormActive}) => {
     return (

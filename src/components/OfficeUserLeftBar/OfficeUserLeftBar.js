@@ -1,10 +1,8 @@
 import { Fragment, useState } from 'react';
-import user from '../../images/officeUser/user.jpg';
 import { useHistory } from 'react-router-dom';
 import {auth, dataBase} from '../../firebase';
-import EditFormUser from '../EditFormUser/EditFormUser';
 import { useDispatch, useSelector } from 'react-redux';
-import addUser from '../../actions/addUser';
+import {EditFormUser, user, addUser} from '../OfficeUserLeftBar';
 
 const OfficeUserLeftBar = () => {
 
@@ -12,9 +10,12 @@ const OfficeUserLeftBar = () => {
     const dispatch = useDispatch();
     const profile = useSelector(state => state.profile);
     const [editFormVisible, showEditForm] = useState(false);
+    const [disableBtn, setDisableBtn] = useState(false);
 
     const sendProfileOnDataBase = async (values) => {
 
+        setDisableBtn(true);
+        
         await dataBase.ref('profiles/' + profile.uid).update({
             name: values.name,
             surname: values.surname,
@@ -59,6 +60,7 @@ const OfficeUserLeftBar = () => {
                 profile={profile}
                 onSubmit={sendProfileOnDataBase}
                 visible={editFormVisible}
+                disableBtn={disableBtn}
             />
         </Fragment>
     )

@@ -1,12 +1,9 @@
 import { useEffect } from "react";
-import AllProjects from "../AllProjects/AllProjects";
-import ContentProjectsCompanyCard from '../ContentProjectsCompanyCard/ContentProjectsCompanyCard';
-import {dataBase} from '../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
-import addProject from '../../actions/addProject';
-import {addRequests} from '../../actions/requests';
+import {dataBase} from '../../firebase';
+import {addRequests, AllProjects, ContentProjectsCompanyCard, addProject} from '../ContentProjectsCompany';
 
-const ContentProjectsCompany = ({btn}) => {
+const ContentProjectsCompany = ({ showRequests }) => {
 
     const profile = useSelector(state => state.profile);
     const requests = useSelector(state => state.requests);
@@ -17,7 +14,7 @@ const ContentProjectsCompany = ({btn}) => {
             dispatch(addProject(projects.val()))
         });
         dataBase.ref('requests/').orderByChild('companyUid').equalTo(profile.uid).once('value', snapshot => { getRequstsData(snapshot.val()) });
-    }, []) //btn - dependences
+    }, []) 
 
     const getRequstsData = async (snapshot) => {
         const promises = Object.values(snapshot).map( el => {
@@ -39,7 +36,7 @@ const ContentProjectsCompany = ({btn}) => {
 
     return (
         <div className="content__projects">
-            {btn
+            {showRequests
                 ? Object.keys(requests).map(requestUid => {
                     return <ContentProjectsCompanyCard key={requestUid} values={requests[requestUid]}/>
                 })
