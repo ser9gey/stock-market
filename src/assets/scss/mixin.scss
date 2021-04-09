@@ -1,0 +1,47 @@
+@mixin color-white {
+    color: white;
+}
+
+@mixin border-2px-solid-white {
+    border: 2px solid white;
+}
+
+@mixin border-1px-solid-white {
+    border: 1px solid white;
+}
+
+@mixin fs18 {
+    font-size: 18px;
+}
+
+@mixin width-100 {
+    width: 100%;
+}
+
+@mixin max-width-100 {
+    max-width: 100%;
+}
+
+@mixin display-block {
+    display: block;
+}
+
+@mixin display-none {
+    display: none;
+}
+
+@mixin text-align-center {
+    text-align: center;
+}
+
+@mixin display-flex {
+    display: flex;
+}
+
+@mixin background-transparent {
+    background: transparent;
+}
+
+@mixin border-none {
+    border: none;
+}

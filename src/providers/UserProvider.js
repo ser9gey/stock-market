@@ -1,7 +1,7 @@
 import { useEffect, createContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { auth, dataBase } from '../firebase';
+import { auth, dataBase } from '../core/api/firebase';
 import {addUser} from '../providers';
 
 export const UserContext = createContext({ user: null });
@@ -17,7 +17,7 @@ export const UserProvider = (props) => {
       setUser(userAuth)
 
       if (userAuth === null) {
-        history.push("/");
+        history.push("/users");
       } else {
         dataBase.ref('profiles/' + userAuth.uid).once('value')
           .then(snapshot => dispatch(addUser(snapshot.val())))

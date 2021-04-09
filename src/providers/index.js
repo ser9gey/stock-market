@@ -1,3 +1,3 @@
-import addUser from '../actions/addUser';
+import addUser from '../redux/actions/addUser';
 
 export {addUser};

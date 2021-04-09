@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './assets/scss/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import './firebase';
-import { store } from './store/store';
+import './core/api/firebase';
+import { store } from './redux/store/store';
 
 export const MyContext = React.createContext();
 

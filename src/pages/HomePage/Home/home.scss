@@ -1,0 +1,195 @@
+@import '../../../assets/scss/mixin.scss';
+@import '../../../assets/scss/vars.scss';
+
+.home {
+    background: $main-background url("../../../assets/images/home/home-bg.jpg")no-repeat center center / cover;
+    min-height: 100vh;
+    @include color-white;
+
+    &-header {
+        @include display-flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 15px 0px;
+        border-bottom: 1px solid white;
+
+        &_active {
+            border-bottom: none;
+        }
+
+        &__logo {
+            width: 100px;
+        }
+
+        &__images {
+            @include max-width-100;
+            height: auto;
+        }
+    }
+}
+
+.home-header__btn {
+    padding: 10px 15px;
+    @include color-white;
+    @include background-transparent;
+    margin-right: 30px;
+    text-transform: uppercase;
+    border: 1px solid $user-active-tab;
+
+    &:last-child {
+        margin-right: 0px;
+    }
+
+    &_active {
+        background: $user-active-tab;
+    }
+}
+
+.home-header__burger {
+    @include border-2px-solid-white;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    @include display-none;
+
+    &-line {
+        background: white;
+        width: 30px;
+        height: 2px;
+        margin-bottom: 6px;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.home-content {
+    @include display-flex;
+    padding: 105px;
+
+    &__description {
+        max-width: 500px;
+
+        &-title {
+            font-size: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        &-text {
+            font-size: 18px;
+            line-height: 1.2;
+        }
+    }
+
+    &__form {
+        max-width: 600px;
+        @include width-100;
+        min-height: 600px;
+        margin-left: auto;
+        background: linear-gradient(45deg, rgba(231,75,193,1) 0%, rgba(255,103,57,1) 50%, rgba(255,196,0,1) 100%);
+
+        &_red {
+            background: linear-gradient(45deg, rgb(202, 231, 75) 0%, rgba(255,103,57,1) 50%, rgb(223, 49, 26) 100%);
+        }
+
+        &_active {
+            @include display-block;
+        }
+
+        &-btn {
+            width: 50%;
+            padding: 25px;
+            @include background-transparent;
+            @include color-white;
+
+            &_active {
+                background: rgb(48, 45, 45);
+            }
+        }
+
+        &-fields {
+            padding: 40px 15px 20px;
+            @include display-none;
+
+            &_active {
+                @include display-block;
+            }
+
+            &-input {
+                @include background-transparent;
+                outline: none;
+                @include width-100;
+                margin-bottom: 10px;
+                @include border-1px-solid-white;
+                padding: 20px;
+                border-radius: 10px;
+                @include color-white;
+
+                &::placeholder {
+                    @include color-white;
+                }
+            }
+
+            &-btn {
+                background: rgb(48, 45, 45);
+                @include width-100;
+                padding: 21px;
+                @include color-white;
+                border-radius: 10px;
+            }
+
+            &-error {
+                margin: 10px 0px;
+                @include text-align-center;
+            }
+        }
+    }
+}
+
+@media(max-width: 1420px) {
+    .home-content {
+        padding: 105px 40px 0px;
+    }
+}
+
+@media(max-width: 1285px) {
+    .home-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .home-content__description {
+        margin-bottom: 100px;
+        @include text-align-center;
+    }
+    .home-content__form {
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 500px) {
+    .home-header__burger {
+        @include display-block;
+    }
+    .home-header__btns {
+        @include display-none;
+    }
+    .home-content {
+        padding: 60px 0px 0px;
+    }
+    .home-content__description-title {
+        font-size: 36px;
+    }
+    .home-header__btns {
+        order: 3;
+        @include width-100;
+    }
+    .home-header__btn {
+        @include display-block;
+        margin-right: 0px;
+        @include text-align-center;
+        padding: 12px 15px;
+    }
+}

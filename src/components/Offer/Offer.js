@@ -1,7 +1,7 @@
 import './offer.scss';
 import { useSelector } from 'react-redux';
-import {dataBase} from '../../firebase';
 import { useState } from 'react';
+import {sendedReques} from '../Offer';
 
 const Offer = ({ project }) => {
 
@@ -10,16 +10,12 @@ const Offer = ({ project }) => {
     const [attribute, setAttribute] = useState(false)
 
     const sendRequest = async () => {
-
-        const newRequestRef = await dataBase.ref('requests/').push()
-
-        await newRequestRef.set({
-            userUid: profile.uid,
-            companyUid: project.profileUid,
-            projectUid: project.projectId,
-            requestUid: newRequestRef.key,
-        })
-        .then(() => setAttribute(true))
+        try {
+            await sendedReques(profile.uid, project)
+            .then(() => setAttribute(true)) 
+        } catch (error) {
+            console.log(error);
+        }   
     }
 
     return (

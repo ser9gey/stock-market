@@ -1,0 +1,113 @@
+@import '../../../assets/scss/mixin.scss';
+@import '../../../assets/scss/vars.scss';
+
+.office {
+    background: $main-background;
+    padding: 23.5px;
+    @include color-white;
+    height: 100vh;
+
+    &__wrapp {
+        position: relative;
+        @include display-flex;
+        @include border-2px-solid-white;
+        height: 100%;
+    }
+
+    &-profile {
+        max-width: 400px;
+        @include width-100;
+        @include display-flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-right: 2px solid white;
+        padding: 35px;
+    }
+
+    &-content {
+        @include width-100;
+        padding: 35px;
+    }
+}
+
+.office-profile {
+
+    &__header {
+
+        &-logo {
+            margin-bottom: 20px;
+        }
+
+        &-ava {
+            @include max-width-100;
+        }
+
+        &-btns {
+            @include display-flex;
+            justify-content: space-between;
+        }
+
+        &-btn {
+            @include background-transparent;
+            @include color-white;
+            @include fs18;
+        }
+    }
+
+    &__content {
+        
+        &-info {
+            margin-bottom: 20px;
+            line-height: 19px;
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        &-btn {
+            background: $company-active-tab;
+            padding: 12px;
+            @include width-100;
+            @include color-white;
+        }
+    }
+}
+
+@media(max-width: 1000px) {
+    .office__wrapp {
+        @include display-block;
+    }
+    .office {
+        min-height: 100vh;
+        height:auto;
+    }
+    .office-profile {
+        border-right: none;
+        @include max-width-100 
+    }
+    .office-profile__header {
+        margin-bottom: 70px;
+    }
+    .content__btns {
+        @include text-align-center;
+    }
+    .office-profile__content {
+        @include text-align-center;
+    }
+}
+
+@media(max-width: 600px) {
+    .office__wrapp {
+        @include border-none;
+    }
+    .office-profile {
+        padding: 0px;
+    }
+    .office-content {
+        padding: 35px 0px;
+    }
+    .office-profile__header {
+        margin-bottom: 30px;
+    }
+}
